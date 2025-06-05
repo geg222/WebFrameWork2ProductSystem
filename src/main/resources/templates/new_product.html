@@ -8,6 +8,7 @@
 
 <body>
 <div class="container">
+    <a th:href="@{/}" class="btn btn-secondary mt-4">← 홈으로 돌아가기</a>
     <h1 class="mt-5 text-center">Create New Product</h1>
     <br />
     <form th:action="@{/products/save}" th:object="${product}" method="post">
@@ -16,18 +17,22 @@
                 <div class="mb-3">
                     <label for="productName" class="form-label">Product Name:</label>
                     <input type="text" id="productName" class="form-control" th:field="*{name}" />
+                    <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">상품명 오류</div>
                 </div>
                 <div class="mb-3">
                     <label for="brand" class="form-label">Brand:</label>
                     <input type="text" id="brand" class="form-control" th:field="*{brand}" />
+                    <div class="text-danger" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">브랜드 오류</div>
                 </div>
                 <div class="mb-3">
                     <label for="madeIn" class="form-label">Made In:</label>
                     <input type="text" id="madeIn" class="form-control" th:field="*{madeIn}" />
+                    <div class="text-danger" th:if="${#fields.hasErrors('madeIn')}" th:errors="*{madeIn}">원산지 오류</div>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price:</label>
                     <input type="text" id="price" class="form-control" th:field="*{price}" />
+                    <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">가격 오류</div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Save</button>

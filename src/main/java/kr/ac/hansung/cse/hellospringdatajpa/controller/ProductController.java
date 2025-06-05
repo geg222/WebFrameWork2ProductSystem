@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
@@ -21,6 +25,9 @@ public class ProductController {
 
         List<Product> listProducts = service.listAll();
         model.addAttribute("listProducts", listProducts);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = auth.getName();
+        model.addAttribute("userEmail", userEmail);
 
         return "index";
     }
@@ -47,7 +54,11 @@ public class ProductController {
     // @RequestBody는 HTTP 요청 본문에 포함된
     //  JSON 데이터(예: {"name": "Laptop", "brand": "Samsung", "madeIn": "Korea", "price": 1000.00})를 Product 객체에 매핑
     @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("product") Product product) {
+    public String saveProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            String viewName = (product.getId() == null) ? "new_product" : "edit_product";
+            return viewName;
+        }
 
         service.save(product);
 
