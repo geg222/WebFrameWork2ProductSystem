@@ -2,7 +2,7 @@ package kr.ac.hansung.cse.hellospringdatajpa.controller;
 
 import kr.ac.hansung.cse.hellospringdatajpa.entity.MyUser;
 import kr.ac.hansung.cse.hellospringdatajpa.entity.Role;
-import kr.ac.hansung.cse.hellospringdatajpa.service.AuthService;
+import kr.ac.hansung.cse.hellospringdatajpa.service.RegistrationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class AuthController {
+public class RegistrationController {
 
     @Autowired
-    private AuthService authService;
+    private RegistrationService registrationService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signup(Model model) {
@@ -38,13 +38,13 @@ public class AuthController {
             return "signup";
         }
 
-        if (authService.checkEmailExists(user.getEmail())) {
+        if (registrationService.checkEmailExists(user.getEmail())) {
             model.addAttribute("emailExists", true);
             return "signup";
         }
 
         user.setRole(Role.ROLE_USER);
-        authService.createUser(user);
+        registrationService.createUser(user);
         return "redirect:/login";
     }
 }
