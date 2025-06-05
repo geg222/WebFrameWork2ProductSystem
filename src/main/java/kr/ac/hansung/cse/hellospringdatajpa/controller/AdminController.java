@@ -31,8 +31,17 @@ public class AdminController {
     @PostMapping("/users/{id}/promote")
     public String promoteUser(@PathVariable Long id) {
         MyUser user = userRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("User not found"));
+                .orElseThrow(() -> new NoSuchElementException("해당 유저를 찾을 수 없습니다"));
         user.setRole(Role.ROLE_ADMIN);
+        userRepository.save(user);
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/users/{id}/demote")
+    public String demoteUser(@PathVariable Long id) {
+        MyUser user = userRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("해당 유저를 찾을 수 없습니다"));
+        user.setRole(Role.ROLE_USER);
         userRepository.save(user);
         return "redirect:/admin/users";
     }

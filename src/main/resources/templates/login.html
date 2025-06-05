@@ -130,6 +130,9 @@
             <button type="submit">로그인</button>
             <button type="button" onclick="location.href='/helloSpringDataJpa/signup'">회원가입</button>
         </form>
+        <div class="message" th:if="${message}">
+            <p class="error" th:text="${message}"></p>
+        </div>
 
         <div class="message" th:if="${param.error}">
             <p class="error">이메일 또는 비밀번호가 올바르지 않습니다.</p>

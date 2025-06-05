@@ -110,6 +110,9 @@ table tr:hover {
                 <form th:action="@{'/admin/users/' + ${user.id} + '/promote'}" method="post" th:if="${user.role.name() != 'ROLE_ADMIN'}">
                     <button type="submit" class="btn btn-sm btn-warning">Promote to Admin</button>
                 </form>
+                <form th:action="@{'/admin/users/' + ${user.id} + '/demote'}" method="post" th:if="${user.role.name() == 'ROLE_ADMIN' and user.email != #authentication.name}">
+                    <button type="submit" class="btn btn-sm btn-secondary">Demote to User</button>
+                </form>
             </td>
         </tr>
         </tbody>

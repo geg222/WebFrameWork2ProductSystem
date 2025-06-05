@@ -34,6 +34,7 @@ public class Product {
     @Pattern(regexp = "^[가-힣a-zA-Z\\s]+$", message = "원산지는 문자만 입력 가능합니다.")
     private String madeIn;
 
+    @Column(nullable = false)
     @NotNull(message = "가격을 입력해주세요.")
     @Min(value = 1, message = "가격은 1 이상이어야 합니다.")
     private double price;

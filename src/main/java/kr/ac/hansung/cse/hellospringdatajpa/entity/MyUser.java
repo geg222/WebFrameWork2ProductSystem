@@ -20,15 +20,15 @@ public class MyUser
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 100)
     @NotBlank(message = "비밀번호를 입력해주세요.")
     @Size(min = 6, max = 100, message = "비밀번호는 6자 이상 100자 이하로 입력해주세요.")
-    @Column(nullable=false)
     private String password;
 
+    @Column(nullable = false, unique = true, length = 100)
     @NotBlank(message = "이메일을 입력해주세요.")
     @Email(message = "올바른 이메일 형식이어야 합니다.")
     @Size(min = 5, max = 100, message = "이메일은 5자 이상 100자 이하로 입력해주세요.")
-    @Column(nullable=false, unique=true)
     private String email;
 
     @Enumerated(EnumType.STRING)
