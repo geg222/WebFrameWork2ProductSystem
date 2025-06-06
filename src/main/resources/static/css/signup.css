@@ -1,61 +1,83 @@
-
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    background-color: #f2f4f6;
+    color: #212529;
     margin: 0;
-    padding: 0;
+    padding: 2rem;
 }
 
-.signup-container {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.signup-container h2 {
+h2 {
+    color: #212529;
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-    margin-bottom: 24px;
-    color: #333;
 }
 
-.form-group {
-    margin-bottom: 16px;
+form {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 420px;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-.form-group label {
+label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #343a40;
 }
 
-.form-group input {
+input.form-control {
     width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s ease-in-out;
 }
 
-.form-group input:focus {
-    border-color: #007bff;
+input.form-control:focus {
+    border-color: #0074E9;
     outline: none;
 }
 
-.submit-button {
+button[type="submit"] {
+    margin-top: 2rem;
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    background-color: #0074E9;
     color: white;
+    padding: 0.75rem;
+    font-size: 1rem;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 0.5rem;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.submit-button:hover {
-    background-color: #0056b3;
+button[type="submit"]:hover {
+    background-color: #005bb5;
+}
+
+.btn-secondary {
+    display: block;
+    text-align: center;
+    margin: 1rem auto 0;
+    color: #0074E9;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+    text-decoration: underline;
+}
+
+.text-danger {
+    font-size: 0.85rem;
+    color: #d32f2f;
+    margin-top: 0.3rem;
 }
